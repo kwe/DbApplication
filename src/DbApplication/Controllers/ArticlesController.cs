@@ -13,7 +13,25 @@ namespace DbApplication.Controllers
       }
       public IActionResult Index()
       {
+        return View(_context.Articles.ToList());
+      }
+
+      public IActionResult Create()
+      {
         return View();
+      }
+
+      [HttpPost]
+      [ValidateAntiForgeryToken]
+      public IActionResult Create(Article article)
+      {
+        if(ModelState.IsValid)
+        {
+          _context.Articles.Add(article);
+          _context.SaveChanges();
+          return RedirectToAction("Index");
+        }
+        return View(article);
       }
     }
 }

@@ -1,0 +1,13 @@
+@model IEnumerable<DbApplication.Models.Article>
+
+<h2>Articles</h2>
+<p><a asp-controller="Articles" asp-action="Create">Create new Article</a></p>
+
+@foreach(var article in Model)
+{
+  <div class="panel">
+    <h3>@article.Title</h3>
+    <p>@article.Summary</p>
+    <p>@article.Content</p>
+  </div>
+}
