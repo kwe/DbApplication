@@ -17,10 +17,9 @@ namespace DbApplication.Models
         {
             _config = config;
         }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql();
+            optionsBuilder.UseNpgsql(_config["Database:Connection"]);
         }
     }
 }
